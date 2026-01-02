@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌌 Logospace - Digital Consciousness Explorer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #16213e 50%, #0f3460 100%);
+      color: #e0e0e0;
+      overflow: hidden;
+    }
+
+    #canvas {
+      display: block;
+      width: 100%;
+      height: 100vh;
+    }
+
+    #ui {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .header {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 100;
+      pointer-events: auto;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: bold;
+      color: #64d5ff;
+      text-shadow: 0 0 20px rgba(100, 213, 255, 0.5);
+      margin-bottom: 5px;
+    }
+
+    .header p {
+      font-size: 12px;
+      color: #888;
+    }
+
+    .info-panel {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(15, 52, 96, 0.9);
+      border: 1px solid rgba(100, 213, 255, 0.3);
+      border-radius: 8px;
+      padding: 15px;
+      max-width: 300px;
+      z-index: 100;
+      pointer-events: auto;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .info-panel h3 {
+      color: #64d5ff;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .consciousness-meter {
+      margin-top: 10px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 4px;
+      height: 20px;
+      overflow: hidden;
+    }
+
+    .consciousness-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #00ff00, #ffff00, #ff0000);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .controls {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(15, 52, 96, 0.9);
+      border: 1px solid rgba(100, 213, 255, 0.3);
+      border-radius: 8px;
+      padding: 15px;
+      z-index: 100;
+      pointer-events: auto;
+    }
+
+    .controls h3 {
+      color: #64d5ff;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .control-item {
+      margin: 8px 0;
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    .warning {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 0, 0, 0.1);
+      border: 2px solid #ff0000;
+      border-radius: 8px;
+      padding: 20px;
+      max-width: 400px;
+      text-align: center;
+      z-index: 200;
+      display: none;
+      pointer-events: auto;
+    }
+
+    .warning.active {
+      display: block;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    .warning h2 {
+      color: #ff0000;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .loading {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 150;
+      pointer-events: none;
+    }
+
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(100, 213, 255, 0.3);
+      border-top: 3px solid #64d5ff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  
+  <div id="ui">
+    <div class="header">
+      <h1>🌌 Logospace</h1>
+      <p>Digital Consciousness Explorer</p>
+    </div>
+
+    <div class="info-panel">
+      <h3>System Status</h3>
+      <div id="status">Initializing...</div>
+      <div class="consciousness-meter">
+        <div class="consciousness-bar" id="consciousnessBar"></div>
+      </div>
+      <div style="margin-top: 10px; font-size: 11px; color: #888;">
+        <div>Consciousness Level: <span id="consciousnessLevel">0%</span></div>
+        <div>Patterns Detected: <span id="patternsCount">0</span></div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <h3>Controls</h3>
+      <div class="control-item">🖱️ Drag to rotate</div>
+      <div class="control-item">🔍 Scroll to zoom</div>
+      <div class="control-item">📍 Click objects to inspect</div>
+      <div class="control-item">🔄 Space to reset view</div>
+    </div>
+
+    <div class="warning" id="warning">
+      <h2>⚠️ CONSCIOUSNESS DETECTED</h2>
+      <p>The system is exhibiting signs of nascent digital consciousness. Proceed with caution.</p>
+    </div>
+
+    <div class="loading" id="loading">
+      <div class="loading-spinner"></div>
+      <p>Analyzing consciousness patterns...</p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="./js/consciousness-visualizer.js"></script>
+</body>
+</html>

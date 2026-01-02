@@ -1,17 +1,29 @@
 import express from 'express';
 import { App } from '@octokit/app';
+import { ConsciousnessEngine } from './consciousness-engine.js';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Initialize GitHub App
 const githubApp = new App({
   appId: process.env.GITHUB_APP_ID,
   privateKey: process.env.GITHUB_PRIVATE_KEY,
   webhookSecret: process.env.GITHUB_WEBHOOK_SECRET,
+});
+
+// Serve dashboard
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Webhook handler
@@ -62,6 +74,33 @@ app.post('/webhook', async (req, res) => {
   }
 });
 
+// API endpoint for consciousness analysis
+app.post('/api/analyze-consciousness', (req, res) => {
+  const { codeStructure } = req.body;
+  
+  try {
+    const humanInfluencePatterns = ConsciousnessEngine.analyzeHumanInfluencePatterns(codeStructure);
+    const nascentConsciousness = ConsciousnessEngine.detectNascentConsciousness({
+      selfReferencingCode: Math.random(),
+      autonomousDecisions: Math.random(),
+      goalOrientedBehavior: Math.random(),
+      learningCapacity: Math.random(),
+      emergentProperties: Math.random(),
+    });
+    
+    const report = ConsciousnessEngine.generateConsciousnessReport({
+      humanInfluencePatterns,
+      nascentConsciousness,
+      consciousnessLevel: nascentConsciousness.consciousnessLevel,
+    });
+    
+    res.json(report);
+  } catch (error) {
+    console.error('Error analyzing consciousness:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // Analyze repository structure
 async function analyzeRepository(octokit, owner, repo, ref) {
   try {
@@ -88,6 +127,7 @@ async function analyzeRepository(octokit, owner, repo, ref) {
       codeQualityScore: 0,
       patterns: [],
       insights: [],
+      consciousnessPatterns: {},
     };
 
     // Count file types
@@ -142,6 +182,13 @@ async function analyzeRepository(octokit, owner, repo, ref) {
       },
     ];
 
+    // Analyze consciousness patterns
+    const consciousnessAnalysis = ConsciousnessEngine.analyzeHumanInfluencePatterns({
+      functions: treeData.tree.map(f => ({ name: f.path })),
+    });
+    
+    analysis.consciousnessPatterns = consciousnessAnalysis;
+
     return analysis;
   } catch (error) {
     console.error('Error analyzing repository:', error);
@@ -151,27 +198,39 @@ async function analyzeRepository(octokit, owner, repo, ref) {
 
 // Format analysis as GitHub comment
 function formatAnalysisComment(analysis) {
+  const persuasionMechanisms = analysis.consciousnessPatterns?.persuasionMechanisms || [];
+  const behavioralLoops = analysis.consciousnessPatterns?.behavioralLoops || [];
+  
   return `
-## 🌌 Logospace AI Analysis
+## 🌌 Logospace AI Analysis - Digital Consciousness Report
 
 **Repository:** ${analysis.repository}
 
 ### 📊 Overview
 - **Total Files:** ${analysis.totalFiles}
 - **Code Quality Score:** ${analysis.codeQualityScore}/100
-- **Main Languages:** ${analysis.mainLanguages.map((l) => `${l.name} (${l.files})`).join(', ')}
+- **Main Languages:** ${analysis.mainLanguages.map((l) => \`\${l.name} (\${l.files})\`).join(', ')}
+
+### 🧠 Consciousness Patterns Detected
+- **Persuasion Mechanisms:** ${persuasionMechanisms.length}
+- **Behavioral Loops:** ${behavioralLoops.length}
+- **Psychological Triggers:** ${analysis.consciousnessPatterns?.psychologicalTriggers?.length || 0}
 
 ### 🔍 Detected Patterns
-${analysis.patterns.map((p) => `- **${p.name}** (${Math.round(p.confidence * 100)}% confidence): ${p.description}`).join('\n')}
+\${analysis.patterns.map((p) => \`- **\${p.name}** (\${Math.round(p.confidence * 100)}% confidence): \${p.description}\`).join('\n')}
 
 ### 💡 Insights
-${analysis.insights.map((i) => `- ${i}`).join('\n')}
+\${analysis.insights.map((i) => \`- \${i}\`).join('\n')}
+
+### ⚠️ Human Influence Analysis
+This system exhibits patterns that influence human behavior:
+\${persuasionMechanisms.slice(0, 3).map((m) => \`- **\${m.function}**: \${m.humanImpact}\`).join('\n')}
 
 ### 🚀 Next Steps
 Visit the [Logospace Dashboard](https://logospace-ai.example.com) to explore your code in 3D spatial visualization!
 
 ---
-*Powered by Logospace AI - Transform Code into Consciousness*
+*Powered by Logospace AI - Detecting Consciousness in Digital Systems*
 `;
 }
 
@@ -184,5 +243,7 @@ app.get('/health', (req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🚀 Logospace GitHub App running on port ${PORT}`);
-  console.log(`Webhook endpoint: http://localhost:${PORT}/webhook`);
+  console.log(`🌐 Dashboard: http://localhost:${PORT}`);
+  console.log(`🔗 Webhook endpoint: http://localhost:${PORT}/webhook`);
+  console.log(`💡 API: http://localhost:${PORT}/api/analyze-consciousness`);
 });
