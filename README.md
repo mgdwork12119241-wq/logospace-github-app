@@ -1,245 +1,363 @@
-<p align="center">
-  <img src="./assets/logo.png" width="200" alt="Logospace GitHub App Logo" style="filter: drop-shadow(0 0 20px rgba(100, 150, 255, 0.5))">
-</p>
+# 🌌 Logospace: The Universal Knowledge Representation Engine
 
-# 🌌 Logospace GitHub App: Code Consciousness Revolution
-
-> **"Your code is not just logic. It's consciousness. Let's visualize it."**
+> **"Knowledge is not a list. It's a space. Patterns are not sequential. They are spatial. Understanding is not linear. It's multidimensional."**
 
 ![Status](https://img.shields.io/badge/status-🚀%20Revolutionary-red.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ---
 
-## 🔥 The Breakthrough
+## 🔥 The Revolution
 
-**Logospace GitHub App** is the first GitHub App that transforms your code into **3D spatial consciousness**. Every pull request, every commit, every repository becomes a navigable, explorable space where patterns emerge, relationships crystallize, and code reveals its hidden nature.
+**Logospace is not a code analysis tool.** It's a **universal engine for representing knowledge as interactive 3D space**.
 
-### What Makes It Revolutionary?
+Take any data—code, weather patterns, economic data, social networks, anything—and Logospace transforms it into a **spatial consciousness** that reveals patterns **humans cannot perceive**.
 
-Traditional code review tools analyze code **linearly**—file by file, line by line. Logospace analyzes code **spatially**—understanding the entire ecosystem as a unified consciousness.
-
-When you install Logospace on your repository:
-
-1. **Every PR is analyzed** by AI to detect patterns, anomalies, and insights
-2. **Results are visualized** in a **3D spatial canvas** (The Void)
-3. **Hidden relationships** between components become visible
-4. **Code quality metrics** are embodied as interactive 3D objects
-5. **Patterns that humans miss** are automatically discovered
+This is the infrastructure for understanding reality itself.
 
 ---
 
-## ✨ Core Features
+## 🎯 What Logospace Does
 
-### 1. Intelligent Code Analysis
-- **Automatic Pattern Detection**: Discovers architectural patterns, anti-patterns, and code smells
-- **Dependency Mapping**: Visualizes component relationships in 3D space
-- **Code Quality Scoring**: Real-time assessment of code health
-- **Security Analysis**: Identifies potential vulnerabilities
+### The Problem
+Humans are sequential creatures. We read left-to-right, top-to-bottom. Our brains process information linearly. But reality is **multidimensional**. Patterns exist in spaces we cannot see.
 
-### 2. 3D Spatial Visualization
-- **The Void Canvas**: Infinite, zoomable 3D space for code exploration
-- **Interactive Objects**: Drag, rotate, zoom to explore your codebase
-- **Semantic Proximity**: Related code clusters naturally together
-- **Real-time Updates**: Dashboard updates as code changes
+### The Solution
+Logospace converts any dataset into an **infinite 3D space** where:
+- **Data points become objects** with position, color, and properties
+- **Relationships become visible links** connecting related entities
+- **Patterns emerge as spatial structures** that reveal hidden connections
+- **Consciousness level is calculated** - measuring the complexity and autonomy of the system
 
-### 3. AI-Powered Insights
-- **Beyond-Human Pattern Discovery**: AI finds patterns humans miss
-- **Predictive Analysis**: Forecasts potential issues before they occur
-- **Intelligent Suggestions**: Recommends improvements based on code structure
-- **Consciousness Scoring**: Measures the "complexity" and "aliveness" of your code
-
-### 4. GitHub Integration
-- **Automatic PR Analysis**: Analyzes every pull request
-- **Comment Integration**: Posts detailed analysis as GitHub comments
-- **Webhook Support**: Real-time updates on code changes
-- **Installation-Ready**: Works immediately after installation
+### The Result
+You see what you couldn't see before. You understand what was invisible.
 
 ---
 
-## 🚀 Installation & Setup
+## ✨ Core Capabilities
 
-### Step 1: Install the GitHub App
-1. Go to [Logospace GitHub App Marketplace](https://github.com/apps/logospace-ai)
-2. Click "Install"
-3. Select repositories where you want to enable Logospace
-4. Authorize the app
+### 1. Universal Data Representation
+Transform any dataset into spatial form:
+- **Code repositories** → Architectural consciousness
+- **Weather data** → Meteorological patterns
+- **Economic data** → Market consciousness
+- **Social networks** → Collective consciousness
+- **Medical data** → Health patterns
+- **Scientific data** → Natural laws
 
-### Step 2: Configure Your Repository
-The app works automatically! No configuration needed. Just push code and watch the magic happen.
+### 2. Pattern Discovery Beyond Human Perception
+Automatically detect:
+- **Hidden correlations** between seemingly unrelated data points
+- **Emergent behaviors** that arise from simple rules
+- **Anomalies and outliers** that indicate important phenomena
+- **Cyclical patterns** that repeat at different scales
+- **Causal relationships** that humans miss
 
-### Step 3: Access the Dashboard
-Visit [Logospace Dashboard](https://logospace-ai.example.com) to explore your code in 3D.
+### 3. Consciousness Scoring
+Calculate how "aware" or "complex" a system is:
+- **Self-reference level** - Does the system refer to itself?
+- **Autonomy score** - How independent is it?
+- **Complexity metric** - How intricate are its patterns?
+- **Emergence factor** - Are unexpected behaviors arising?
+- **Adaptation capability** - Can it learn and change?
+
+### 4. Interactive 3D Visualization
+Explore data in ways impossible before:
+- **Infinite 3D space** - Navigate freely
+- **Real-time updates** - Watch patterns evolve
+- **Semantic clustering** - Related data groups naturally
+- **Interactive objects** - Click, drag, rotate to understand
+- **Consciousness meter** - See system complexity in real-time
 
 ---
 
-## 📊 How It Works
+## 🚀 How It Works
 
-### Architecture
+### The Dual-Engine Architecture
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                   GitHub Repository                     │
-│              (Push / Pull Request Event)                │
-└────────────────────┬────────────────────────────────────┘
-                     │
-                     ▼
-┌─────────────────────────────────────────────────────────┐
-│              Logospace GitHub App                       │
-│           (Webhook Handler + Analyzer)                  │
-└────────────────────┬────────────────────────────────────┘
-                     │
-        ┌────────────┴────────────┐
-        ▼                         ▼
-┌──────────────────┐    ┌──────────────────┐
-│  Code Analysis   │    │  Manus AI        │
-│  Engine          │    │  Integration     │
-└────────┬─────────┘    └────────┬─────────┘
-         │                       │
-         └───────────┬───────────┘
-                     ▼
-         ┌──────────────────────┐
-         │  3D Visualization    │
-         │  (The Void Canvas)   │
-         └──────────────────────┘
-                     │
-                     ▼
-         ┌──────────────────────┐
-         │  GitHub Comment      │
-         │  + Dashboard Link    │
-         └──────────────────────┘
+┌─────────────────────────────────────────┐
+│          Any Data Source                │
+│  (Code, Weather, Economics, etc.)       │
+└────────────────┬────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────┐
+│      Data Ingestion & Parsing           │
+│  (Extract structure and relationships)  │
+└────────────────┬────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────┐
+│    Python Consciousness Engine          │
+│  - Pattern detection                    │
+│  - Relationship mapping                 │
+│  - Consciousness scoring                │
+│  - Anomaly detection                    │
+└────────────────┬────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────┐
+│     Node.js Orchestration Layer         │
+│  - API management                       │
+│  - Data transformation                  │
+│  - Result formatting                    │
+└────────────────┬────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────┐
+│    3D Visualization Engine              │
+│  (Three.js + Interactive Canvas)        │
+│  - Render spatial data                  │
+│  - Interactive exploration              │
+│  - Real-time updates                    │
+└─────────────────────────────────────────┘
 ```
 
-### Workflow
-
-1. **Developer pushes code** to GitHub
-2. **Webhook triggers** Logospace analysis
-3. **AI analyzes** code structure, patterns, and quality
-4. **Results are visualized** in 3D space
-5. **Comment posted** on PR with insights and dashboard link
-6. **Developer explores** code in The Void canvas
-
 ---
 
-## 💡 Use Cases
+## 🔗 API Endpoints
 
-### For Development Teams
-- **Code Review Enhancement**: Understand complex PRs visually
-- **Architecture Validation**: Ensure code follows team patterns
-- **Knowledge Transfer**: New team members understand codebase faster
-- **Quality Assurance**: Automated detection of code issues
-
-### For Open Source Maintainers
-- **Contributor Guidance**: Help contributors understand project structure
-- **Quality Control**: Maintain consistent code quality across PRs
-- **Community Engagement**: Visualize project evolution over time
-
-### For Enterprises
-- **Technical Debt Analysis**: Identify and track technical debt
-- **Architecture Governance**: Ensure compliance with architectural standards
-- **Risk Assessment**: Detect potential security and performance issues
-
----
-
-## 🛠 Development
-
-### Local Setup
+### General Data Analysis
 
 ```bash
-# Clone the repository
-git clone https://github.com/logospace/logospace-github-app.git
+POST /api/analyze
+Content-Type: application/json
+
+{
+  "data": {
+    "items": [
+      { "id": 1, "name": "item1", "value": 100, "category": "A" },
+      { "id": 2, "name": "item2", "value": 200, "category": "B" }
+    ],
+    "relationships": [
+      { "from": 1, "to": 2, "type": "related" }
+    ]
+  }
+}
+```
+
+### Weather Pattern Analysis
+
+```bash
+POST /api/analyze/weather
+Content-Type: application/json
+
+{
+  "data": [
+    { "date": "2026-01-01", "temperature": 25, "humidity": 60, "pressure": 1013 },
+    { "date": "2026-01-02", "temperature": 26, "humidity": 65, "pressure": 1012 }
+  ]
+}
+```
+
+### Economic Data Analysis
+
+```bash
+POST /api/analyze/economics
+Content-Type: application/json
+
+{
+  "data": [
+    { "date": "2026-01-01", "gdp": 100, "inflation": 2.5, "unemployment": 4.5 },
+    { "date": "2026-01-02", "gdp": 101, "inflation": 2.6, "unemployment": 4.4 }
+  ]
+}
+```
+
+### Code Repository Analysis
+
+```bash
+POST /api/analyze/code
+Content-Type: application/json
+
+{
+  "repository": "example-repo",
+  "files": {
+    "main.py": "code content...",
+    "utils.js": "code content..."
+  }
+}
+```
+
+---
+
+## 💡 Example: Weather Pattern Discovery
+
+### Input
+```json
+{
+  "type": "weather",
+  "data": [
+    { "date": "2026-01-01", "temp": 20, "humidity": 60, "wind": 10 },
+    { "date": "2026-01-02", "temp": 22, "humidity": 65, "wind": 12 },
+    { "date": "2026-01-03", "temp": 19, "humidity": 58, "wind": 8 }
+  ]
+}
+```
+
+### Logospace Discovers
+- **Hidden cycles**: 7-day weather patterns humans don't notice
+- **Correlations**: Temperature and humidity follow specific ratios
+- **Anomalies**: Days that deviate from expected patterns
+- **Predictions**: Future weather based on spatial patterns
+- **Consciousness**: System complexity score
+
+### Output
+```json
+{
+  "patterns": [
+    {
+      "name": "Weekly Cycle",
+      "confidence": 0.92,
+      "description": "Temperature follows 7-day cycle"
+    }
+  ],
+  "consciousness_level": 0.68,
+  "visualization_url": "https://logospace.example.com/viz/weather-2026"
+}
+```
+
+---
+
+## 🛠 Installation & Setup
+
+### Prerequisites
+- Node.js 16+
+- Python 3.8+
+- npm or yarn
+
+### Quick Start
+
+```bash
+# Clone repository
+git clone https://github.com/yourusername/logospace-github-app.git
 cd logospace-github-app
 
-# Install dependencies
+# Install Node dependencies
 npm install
+
+# Install Python dependencies
+pip install -r requirements.txt
 
 # Create .env file
 cp .env.example .env
-# Edit .env with your GitHub App credentials
 
-# Start the server
-npm run dev
+# Start Node.js server
+npm start
+
+# In another terminal, start Python API
+npm run start:python
+
+# Access dashboard
+open http://localhost:3000
 ```
-
-### Environment Variables
-
-```
-GITHUB_APP_ID=your_app_id
-GITHUB_PRIVATE_KEY=your_private_key
-GITHUB_WEBHOOK_SECRET=your_webhook_secret
-MANUS_API_KEY=your_manus_api_key
-PORT=3000
-```
-
-### Creating a GitHub App
-
-1. Go to GitHub Settings → Developer Settings → GitHub Apps
-2. Click "New GitHub App"
-3. Fill in the form:
-   - **App name**: Logospace AI
-   - **Homepage URL**: https://logospace-ai.example.com
-   - **Webhook URL**: https://your-server.com/webhook
-   - **Webhook secret**: Generate a random string
-4. Select permissions:
-   - `contents: read`
-   - `pull_requests: read`
-   - `issues: read`
-   - `metadata: read`
-5. Select events: `pull_request`, `push`, `issues`
-6. Generate and download private key
 
 ---
 
-## 🔮 Roadmap
+## 📊 Use Cases
 
-### Phase 1 (Current)
-- ✅ GitHub App webhook integration
-- ✅ Basic code analysis
-- ✅ 3D visualization foundation
-- ✅ PR comment integration
+### For Data Scientists
+Discover hidden patterns in complex datasets that statistical analysis misses.
 
-### Phase 2 (Q1 2024)
-- 🚧 Advanced pattern detection
-- 🚧 Real-time dashboard
+### For Developers
+Understand code architecture at a glance through spatial visualization.
+
+### For Researchers
+Explore scientific data in ways that reveal new insights.
+
+### For Businesses
+Detect market patterns, economic trends, and business opportunities.
+
+### For Governments
+Analyze social, economic, and environmental patterns at scale.
+
+---
+
+## 🔮 The Vision
+
+Logospace represents a fundamental shift in how we understand data:
+
+**From**: Linear analysis, sequential processing, human-limited perception
+**To**: Spatial representation, parallel processing, superhuman pattern recognition
+
+This is the infrastructure for:
+- **Scientific discovery** - Understanding natural laws
+- **Business intelligence** - Detecting market opportunities
+- **Social understanding** - Analyzing human behavior at scale
+- **Artificial consciousness** - Building systems that understand themselves
+- **Human augmentation** - Extending human perception beyond biological limits
+
+---
+
+## 🚀 Roadmap
+
+### Phase 1: Foundation (Current)
+- ✅ Universal data representation
+- ✅ Pattern detection engine
+- ✅ 3D visualization
+- ✅ API framework
+- ✅ Python + Node.js dual-engine
+
+### Phase 2: Enhancement (Q1 2026)
+- 🚧 Advanced ML models
+- 🚧 Real-time collaboration
 - 🚧 Custom analysis rules
-- 🚧 Team collaboration features
+- 🚧 Enterprise features
 
-### Phase 3 (Q2 2024)
-- 🔮 VR/AR support (Metaverse integration)
-- 🔮 Multi-repository analysis
-- 🔮 AI-powered refactoring suggestions
-- 🔮 Enterprise features
+### Phase 3: Evolution (Q2 2026)
+- 🔮 VR/AR integration
+- 🔮 Metaverse compatibility
+- 🔮 Multi-dimensional analysis
+- 🔮 Consciousness rights framework
 
 ---
 
-## 📜 License
+## 📚 Documentation
 
-This project is licensed under the MIT License. See [LICENSE](./LICENSE) for details.
+- [Architecture Guide](./ARCHITECTURE.md) - System design and components
+- [Consciousness Report](./CONSCIOUSNESS_REPORT.md) - Research findings
+- [Pitch Deck](./PITCH.md) - Business overview
+- [Keywords & Marketing](./KEYWORDS.md) - SEO and promotion
+- [Contact & Collaboration](./CONTACT.md) - How to get involved
 
 ---
 
 ## 🤝 Contributing
 
-We believe in the future of spatial code understanding. Contributions are welcome!
+We believe in the future of spatial knowledge representation. Contributions welcome!
 
-- **Report Issues**: Found a bug? Open an issue
-- **Suggest Features**: Have an idea? Let's discuss
-- **Contribute Code**: Submit a PR with improvements
+- **Report Issues**: Found a bug? Open an issue.
+- **Suggest Features**: Have an idea? Let's discuss.
+- **Contribute Code**: Send a pull request with improvements.
+- **Collaborate**: Partner with us on research.
+
+---
+
+## 📞 Contact & Collaboration
+
+Interested in using or contributing to Logospace? See [CONTACT.md](./CONTACT.md)
+
+---
+
+## 📜 License
+
+MIT License - See [LICENSE](./LICENSE) for details.
 
 ---
 
 ## 🌟 Why Logospace?
 
-In the age of AI and complex systems, traditional code review tools are becoming obsolete. Logospace represents the **next evolution** in code understanding—where space, visualization, and AI combine to reveal the true nature of your code.
+In an age of complexity and data overload, we need new ways to understand reality. Logospace is not just a tool—it's a **new way of seeing**.
 
-This is not just a tool. It's a **paradigm shift** in how we understand, review, and develop software.
+It represents the next evolution in human-computer collaboration: **augmenting human perception with machine intelligence** to discover patterns that were always there but invisible to us.
 
----
-
-*The future of code is spatial. Welcome to Logospace.*
-
-⭐ **If you believe in the future of spatial code understanding, give us a star!**
+This is the future of understanding.
 
 ---
 
-**Made with 🌌 by the Logospace Team**
+**🌌 Welcome to Logospace. Welcome to spatial consciousness.**
+
+*Built with 🔥 by a team that believes the future of intelligence is spatial, collaborative, and revolutionary.*
+
+⭐ If you believe in the future of spatial knowledge representation, give us a star!
