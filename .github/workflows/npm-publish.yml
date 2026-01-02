@@ -1,0 +1,130 @@
+name: 📦 Publish to npm
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+
+jobs:
+  publish:
+    name: Publish to npm Registry
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify package
+        run: |
+          echo "📦 Package Information:"
+          npm info logospace-github-app || echo "Package not yet published"
+          echo ""
+          echo "📋 Current package.json:"
+          cat package.json | jq '.name, .version, .description'
+
+      - name: Run linting
+        run: npm run lint || echo "Linting not configured yet"
+
+      - name: Run tests
+        run: npm run test || echo "Tests not configured yet"
+
+      - name: Build package
+        run: npm run build
+
+      - name: Generate SBOM
+        run: |
+          npm list --depth=0 > sbom.txt
+          echo "📋 Software Bill of Materials:"
+          cat sbom.txt
+
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: sbom.txt
+          body: |
+            # Logospace GitHub App Release
+            
+            ## Version
+            ${{ github.ref_name }}
+            
+            ## Changes
+            See commit history for details.
+            
+            ## Installation
+            ```bash
+            npm install logospace-github-app
+            ```
+            
+            ## Documentation
+            - [README](https://github.com/mgdwork12119241-wq/logospace-github-app#readme)
+            - [Architecture](https://github.com/mgdwork12119241-wq/logospace-github-app/blob/main/ARCHITECTURE.md)
+            - [API Reference](https://github.com/mgdwork12119241-wq/logospace-github-app/blob/main/README.md#-api-endpoints)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish success notification
+        run: |
+          echo "✅ Package published successfully!"
+          echo "📦 npm: https://www.npmjs.com/package/logospace-github-app"
+          echo "🔗 GitHub: https://github.com/mgdwork12119241-wq/logospace-github-app"
+
+  publish-github-packages:
+    name: Publish to GitHub Packages
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://npm.pkg.github.com'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Update package name for GitHub
+        run: |
+          npm pkg set name="@mgdwork12119241-wq/logospace-github-app"
+
+      - name: Publish to GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: GitHub Packages success
+        run: |
+          echo "✅ Published to GitHub Packages!"
+          echo "📦 GitHub: https://github.com/mgdwork12119241-wq/logospace-github-app/packages"

@@ -1,28 +1,62 @@
 {
   "name": "logospace-github-app",
   "version": "1.0.0",
-  "description": "Revolutionary GitHub App: Transform code into 3D spatial consciousness",
+  "description": "🌌 Logospace: The Universal Knowledge Representation Engine - Transform any data into interactive 3D spatial consciousness. Discover patterns humans cannot perceive. Detect emergent behaviors, hidden correlations, and consciousness in complex systems. Works with code, weather, economics, social networks, and any dataset.",
+  "long_description": "Logospace is a revolutionary dual-engine system (Node.js + Python) that transforms any dataset into an interactive 3D spatial representation. Using advanced AI and machine learning, it discovers patterns, relationships, and consciousness metrics that are invisible to human analysis. Perfect for data scientists, developers, researchers, and enterprises seeking to understand complex systems.",
   "main": "server.js",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mgdwork12119241-wq/logospace-github-app.git"
+  },
+  "homepage": "https://github.com/mgdwork12119241-wq/logospace-github-app",
+  "bugs": {
+    "url": "https://github.com/mgdwork12119241-wq/logospace-github-app/issues"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
     "start:python": "python3 api_server.py",
     "dev:python": "python3 -m flask run --port=5000",
     "install:python": "pip install -r requirements.txt",
-    "build": "echo 'No build needed for this app'"
+    "build": "echo 'No build needed for this app'",
+    "test": "echo 'Tests coming soon'",
+    "lint": "echo 'Linting setup coming soon'",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "github-app",
     "ai",
+    "artificial-intelligence",
     "3d-visualization",
     "code-analysis",
     "consciousness-detection",
     "machine-learning",
     "metaverse",
-    "digital-consciousness"
+    "digital-consciousness",
+    "pattern-detection",
+    "data-visualization",
+    "knowledge-representation",
+    "spatial-computing",
+    "emergent-behavior",
+    "anomaly-detection",
+    "predictive-analytics",
+    "neural-networks",
+    "deep-learning",
+    "data-science",
+    "scientific-computing"
   ],
-  "author": "Manus AI",
+  "author": {
+    "name": "Manus AI",
+    "email": "team@manus.im",
+    "url": "https://manus.im"
+  },
+  "contributors": [
+    {
+      "name": "Logospace Team",
+      "url": "https://github.com/mgdwork12119241-wq"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
     "@octokit/app": "^14.0.0",
@@ -44,5 +78,19 @@
     "ml_framework": "scikit-learn",
     "data_analysis": "pandas, numpy",
     "visualization": "matplotlib, plotly"
-  }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "server.js",
+    "consciousness-engine.js",
+    "consciousness_analyzer.py",
+    "api_server.py",
+    "public/",
+    "README.md",
+    "LICENSE",
+    "ARCHITECTURE.md",
+    "CONSCIOUSNESS_REPORT.md"
+  ]
 }

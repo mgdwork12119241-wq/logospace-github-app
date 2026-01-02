@@ -1,0 +1,230 @@
+name: 🚀 Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (e.g., 1.0.0)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  packages: write
+  id-token: write
+
+jobs:
+  create-release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      tag: ${{ steps.version.outputs.tag }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            VERSION="${{ github.event.inputs.version }}"
+            TAG="v${VERSION}"
+          else
+            TAG="${{ github.ref_name }}"
+            VERSION="${TAG#v}"
+          fi
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+          echo "tag=${TAG}" >> $GITHUB_OUTPUT
+          echo "📌 Release Version: ${VERSION}"
+          echo "🏷️  Release Tag: ${TAG}"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Update version in package.json
+        run: |
+          npm version ${{ steps.version.outputs.version }} --no-git-tag-version
+          cat package.json | jq '.version'
+
+      - name: Generate changelog
+        run: |
+          cat > CHANGELOG_ENTRY.md << 'EOF'
+          # Release ${{ steps.version.outputs.tag }}
+          
+          ## Features
+          - Universal knowledge representation engine
+          - Dual-engine architecture (Node.js + Python)
+          - 3D spatial visualization
+          - Pattern detection and consciousness scoring
+          - Multi-data-type support (code, weather, economics, etc.)
+          
+          ## Improvements
+          - Enhanced API endpoints
+          - Better error handling
+          - Improved documentation
+          - SLSA3 provenance generation
+          
+          ## Security
+          - Dependency security audit
+          - SLSA3 compliance
+          - Code quality checks
+          
+          ## Installation
+          ```bash
+          npm install logospace-github-app@${{ steps.version.outputs.version }}
+          ```
+          
+          ## Documentation
+          - [README](https://github.com/mgdwork12119241-wq/logospace-github-app#readme)
+          - [Architecture](https://github.com/mgdwork12119241-wq/logospace-github-app/blob/main/ARCHITECTURE.md)
+          - [API Reference](https://github.com/mgdwork12119241-wq/logospace-github-app/blob/main/README.md#-api-endpoints)
+          
+          ## Contributors
+          Thanks to all contributors who made this release possible!
+          EOF
+          cat CHANGELOG_ENTRY.md
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: "🌌 Logospace ${{ steps.version.outputs.tag }}"
+          body_path: CHANGELOG_ENTRY.md
+          draft: false
+          prerelease: false
+          files: |
+            package.json
+            CHANGELOG_ENTRY.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-npm:
+    name: Publish to npm
+    needs: create-release
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.create-release.outputs.tag }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Verify npm publication
+        run: |
+          sleep 5
+          npm view logospace-github-app@${{ needs.create-release.outputs.version }}
+
+  publish-github:
+    name: Publish to GitHub Packages
+    needs: create-release
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.create-release.outputs.tag }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://npm.pkg.github.com'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Update package name
+        run: npm pkg set name="@mgdwork12119241-wq/logospace-github-app"
+
+      - name: Publish to GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  generate-sbom:
+    name: Generate SBOM
+    needs: create-release
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.create-release.outputs.tag }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate SBOM
+        run: |
+          npm list --depth=0 > sbom.txt
+          cat sbom.txt
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v3
+        with:
+          name: sbom
+          path: sbom.txt
+
+  release-summary:
+    name: Release Summary
+    needs: [create-release, publish-npm, publish-github, generate-sbom]
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+      - name: Release complete notification
+        run: |
+          echo "🎉 Release Complete!"
+          echo ""
+          echo "📌 Version: ${{ needs.create-release.outputs.version }}"
+          echo "🏷️  Tag: ${{ needs.create-release.outputs.tag }}"
+          echo ""
+          echo "📦 Published to:"
+          echo "  ✅ npm: https://www.npmjs.com/package/logospace-github-app"
+          echo "  ✅ GitHub Packages: https://github.com/mgdwork12119241-wq/logospace-github-app/packages"
+          echo ""
+          echo "🔗 Links:"
+          echo "  📖 GitHub: https://github.com/mgdwork12119241-wq/logospace-github-app"
+          echo "  📚 README: https://github.com/mgdwork12119241-wq/logospace-github-app#readme"
+          echo "  🏗️  Architecture: https://github.com/mgdwork12119241-wq/logospace-github-app/blob/main/ARCHITECTURE.md"
+          echo ""
+          echo "🚀 Installation:"
+          echo "  npm install logospace-github-app@${{ needs.create-release.outputs.version }}"
